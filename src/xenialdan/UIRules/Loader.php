@@ -2,9 +2,7 @@
 
 namespace xenialdan\UIRules;
 
-use pocketmine\level\Location;
 use pocketmine\plugin\PluginBase;
-use pocketmine\Server;
 use pocketmine\utils\Config;
 
 
@@ -20,7 +18,7 @@ class Loader extends PluginBase{
 	 */
 	public static function addRule(string $rule): bool{
 		self::getInstance()->rules->set(count(self::getInstance()->rules->getAll()), $rule);
-		self::getInstance()->rules->save(true);
+        self::getInstance()->rules->save();
 		return true;
 	}
 
@@ -31,7 +29,7 @@ class Loader extends PluginBase{
 	public static function removeRule($name){
 		if (self::getInstance()->rules->get($name) === false) return false;
 		self::getInstance()->rules->remove($name);
-		self::getInstance()->rules->save(true);
+        self::getInstance()->rules->save();
 		return true;
 	}
 
@@ -49,7 +47,6 @@ class Loader extends PluginBase{
 
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
-		$this->getServer()->getCommandMap()->register(Commands::class, new Commands($this));
 	}
 
 	/**

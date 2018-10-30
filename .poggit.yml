@@ -2,4 +2,7 @@
 projects:
   UIRules:
     path: ""
+      libs:
+      - src: thebigsmilexd/customui/customui
+        version: ^3.0.0
 ...
