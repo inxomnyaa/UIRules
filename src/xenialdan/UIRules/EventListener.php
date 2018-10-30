@@ -37,6 +37,7 @@ class EventListener implements Listener
             else
                 $player->kick(TextFormat::RED . "You MUST accept the rules to play on this server", false);
         });
+        $player->sendForm($form);
     }
 
     public function onJoin(PlayerJoinEvent $event)
